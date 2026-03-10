@@ -212,6 +212,17 @@ html, body {
 
 /* Skills */
 .skills { background: linear-gradient(180deg, #070b15, var(--navy-900)); color: #fff; }
+
+/* Prevent overlap: remove rigid viewport height on smaller screens */
+@media (max-width: 991.98px) {
+  #services.vh-100,
+  #services .container.vh-100 {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #services { padding-top: 3rem; padding-bottom: 3rem; }
+}
+
 .skill-card {
   background: var(--navy-800);
   border: 1px solid rgba(255,255,255,0.08);
@@ -371,6 +382,12 @@ h1, h2, .navbar-brand{ font-family: 'Varnyx', sans-serif; }
 .send-btn:hover { box-shadow: 0 8px 20px rgba(255,174,0,0.6); border-color: rgba(255,174,0,0.8); }
 
 /* Projects */
+/* Ensure Projects section has spacing so it doesn't collide with following/previous sections */
+#projects { padding-top: 2rem; padding-bottom: 2rem; }
+@media (max-width: 575.98px) {
+  #projects { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+}
+
 .pcard-group { display: flex; gap: 40px; }
 .pcard {
   width: 100%;
@@ -410,3 +427,31 @@ h1, h2, .navbar-brand{ font-family: 'Varnyx', sans-serif; }
 .pcard:hover > .p-layer { opacity: 1; }
 .pcard:hover > .p-info { bottom: 0; opacity: 1; }
 .pcard-group:hover > .pcard:not(:hover) { filter: blur(5px); }
+
+/* Projects responsiveness */
+/* Remove forced viewport height on smaller screens and allow natural flow */
+@media (max-width: 991.98px) {
+  #projects .container.vh-100 {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Tighter cards on small screens to avoid excessive vertical scroll */
+@media (max-width: 575.98px) {
+  .pcard {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  .p-info {
+    font-size: 13px;
+  }
+}
+
+/* Improve medium breakpoint spacing */
+@media (max-width: 767.98px) {
+  #projects h2 { margin-bottom: 1.5rem !important; }
+}
